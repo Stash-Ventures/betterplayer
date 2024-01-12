@@ -1,4 +1,4 @@
-import 'package:better_player/better_player.dart';
+import 'package:sv_better_player/better_player.dart';
 import 'package:better_player_example/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +12,7 @@ class _HlsSubtitlesPageState extends State<HlsSubtitlesPage> {
 
   @override
   void initState() {
-    BetterPlayerControlsConfiguration controlsConfiguration =
-        BetterPlayerControlsConfiguration(
+    BetterPlayerControlsConfiguration controlsConfiguration = BetterPlayerControlsConfiguration(
       controlBarColor: Colors.black26,
       iconsColor: Colors.white,
       playIcon: Icons.play_arrow_outlined,
@@ -40,20 +39,34 @@ class _HlsSubtitlesPageState extends State<HlsSubtitlesPage> {
       overflowMenuIconsColor: Colors.white,
     );
 
-    BetterPlayerConfiguration betterPlayerConfiguration =
-        BetterPlayerConfiguration(
-            controlsConfiguration: controlsConfiguration,
-            aspectRatio: 16 / 9,
-            fit: BoxFit.contain,
-            subtitlesConfiguration: BetterPlayerSubtitlesConfiguration(
-              fontSize: 16.0,
-            ));
+    BetterPlayerConfiguration betterPlayerConfiguration = BetterPlayerConfiguration(
+        controlsConfiguration: controlsConfiguration,
+        aspectRatio: 16 / 9,
+        fit: BoxFit.contain,
+        subtitlesConfiguration: BetterPlayerSubtitlesConfiguration(
+          fontSize: 20.0,
+          fontFamily: "Roboto",
+          fontColor: Colors.amber,
+          alignment: Alignment.topCenter,
+          backgroundColor: Colors.black
+        ));
     BetterPlayerDataSource dataSource = BetterPlayerDataSource(
-        BetterPlayerDataSourceType.network, Constants.hlsPlaylistUrl,
-        useAsmsSubtitles: true);
+      BetterPlayerDataSourceType.network,
+      Constants.hlsPlaylistUrl,
+      useAsmsSubtitles: true,
+      cacheConfiguration: BetterPlayerCacheConfiguration(useCache: false)
+    );
     _betterPlayerController = BetterPlayerController(betterPlayerConfiguration);
     _betterPlayerController.setupDataSource(dataSource);
     super.initState();
+    _betterPlayerController.addEventsListener((event) {
+      if (event.betterPlayerEventType == BetterPlayerEventType.changedSubtitles) {
+        print(_betterPlayerController.betterPlayerSubtitlesSourceList);
+        // if(_betterPlayerController.betterPlayerSubtitlesSourceList.isNotEmpty){
+        //   _betterPlayerController.setupSubtitleSource(_betterPlayerController.betterPlayerSubtitlesSourceList.first);
+        // }
+      }
+    });
   }
 
   @override
