@@ -103,13 +103,16 @@ class _BetterPlayerSubtitlesDrawerState
       width: double.infinity,
       child: Padding(
         padding: EdgeInsets.only(
+            top: _configuration!.mainAxisAlignment == MainAxisAlignment.start
+                ? 20
+                : 0,
             bottom: _playerVisible
                 ? _configuration!.bottomPadding + 30
                 : _configuration!.bottomPadding,
             left: _configuration!.leftPadding,
             right: _configuration!.rightPadding),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: _configuration!.mainAxisAlignment,
           children: textWidgets,
         ),
       ),

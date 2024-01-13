@@ -48,7 +48,8 @@ class _HlsSubtitlesPageState extends State<HlsSubtitlesPage> {
           fontFamily: "Roboto",
           fontColor: Colors.amber,
           alignment: Alignment.topCenter,
-          backgroundColor: Colors.black
+          backgroundColor: Colors.black,
+          mainAxisAlignment: MainAxisAlignment.start
         ));
     BetterPlayerDataSource dataSource = BetterPlayerDataSource(
       BetterPlayerDataSourceType.network,
