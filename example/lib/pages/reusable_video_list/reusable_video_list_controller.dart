@@ -1,4 +1,4 @@
-import 'package:better_player/better_player.dart';
+import 'package:sv_better_player/better_player.dart';
 import 'package:collection/collection.dart' show IterableExtension;
 
 class ReusableVideoListController {

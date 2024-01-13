@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:better_player/better_player.dart';
-import 'package:better_player/src/subtitles/better_player_subtitle.dart';
+import 'package:sv_better_player/better_player.dart';
+import 'package:sv_better_player/src/subtitles/better_player_subtitle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
@@ -103,13 +103,16 @@ class _BetterPlayerSubtitlesDrawerState
       width: double.infinity,
       child: Padding(
         padding: EdgeInsets.only(
+            top: _configuration!.mainAxisAlignment == MainAxisAlignment.start
+                ? 20
+                : 0,
             bottom: _playerVisible
                 ? _configuration!.bottomPadding + 30
                 : _configuration!.bottomPadding,
             left: _configuration!.leftPadding,
             right: _configuration!.rightPadding),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: _configuration!.mainAxisAlignment,
           children: textWidgets,
         ),
       ),
