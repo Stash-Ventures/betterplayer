@@ -80,7 +80,7 @@ class BetterPlayerSubtitlesFactory {
   }
 
   static List<BetterPlayerSubtitle> _parseString(String value) {
-    List<String> components = value.split('\r\n\r\n');
+    List<String> components = value.split(RegExp(r'(\r\n)(\r\n)|\r\r|\n\n|(\r\n)\n|(\r\n)\r|\r(\r\n)|\n(\r\n)'));
     if (components.length == 1) {
       components = value.split('\n\n');
     }
