@@ -96,7 +96,7 @@ class _BetterPlayerWithControlsState extends State<BetterPlayerWithControls> {
               ),
               if (betterPlayerController.betterPlayerControlsConfiguration.playerTheme == BetterPlayerTheme.bottom_progressbar)
                 Positioned(
-                  bottom: 0,
+                  bottom: 10,
                   left: 0,
                   right: 0,
                   child: _buildProgressBar(betterPlayerController.videoPlayerController!, betterPlayerController, controlsConfiguration),
